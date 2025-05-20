@@ -5,6 +5,7 @@
 Given the head of a sorted linked list, delete all duplicates such that each element appears only once. Return the linked list sorted as well.
 The list is guaranteed to be sorted in ascending order.
 Definition for singly-linked list.
+```
 struct ListNode {
       int val;
       ListNode *next;
@@ -12,6 +13,7 @@ struct ListNode {
       ListNode(int x) : val(x), next(nullptr) {}
       ListNode(int x, ListNode *next) : val(x), next(next) {}
 };
+```
 __________________________________________________________
 
 2. Valid parentheses.
