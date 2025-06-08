@@ -1,6 +1,6 @@
 # Practice (C++)
 
-1. Remove duplicates from sorted list.
+1. Remove duplicates from sorted list
 
 Given the head of a sorted linked list, delete all duplicates such that each element appears only once. Return the linked list sorted as well.
 The list is guaranteed to be sorted in ascending order.
@@ -16,7 +16,7 @@ struct ListNode {
 ```
 __________________________________________________________
 
-2. Valid parentheses.
+2. Valid parentheses
 
 Given a string s containing just the characters '(', ')', '{', '}', '[' and ']', determine if the input string is valid.
 An input string is valid if:
@@ -47,3 +47,15 @@ C can be placed before D (500) and M (1000) to make 400 and 900.
 Given a roman numeral, convert it to an integer.
 __________________________________________________________
 
+4. Length of Last Word
+
+Given a string 's' consisting of words and spaces, return the length of the last word in the string.
+A word is a maximal substring consisting of non-space characters only.
+
+Constraints:
+- 1 <= s.length <= 10^4
+- 's' consists of only English letters and spaces ' '.
+- There will be at least one word in 's'.
+__________________________________________________________
+
+5. 
