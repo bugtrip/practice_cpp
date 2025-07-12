@@ -18,8 +18,8 @@ void print_vector(std::vector<T>& v){
     if(v.empty()){ 
         std::cout << "vector is empty!" << std::endl; 
     } else {
-        for(auto& n: v){
-            std::cout << n << " ";
+        for(auto& elem: v){
+            std::cout << elem << " ";
         }
         std::cout << std::endl;
     }

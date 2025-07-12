@@ -64,6 +64,8 @@ Implement a template function that takes the following parameters:
 - a value x of type `T`
 - a vector `arr` of type `T`
 - a filter function
+
 The function should iterate through the vector and compare each element with the value x. If an element is equal to x, it must be removed from the vector. Also, implement a separate function that prints out all elements of the vector.
 __________________________________________________________
+
 6. 
