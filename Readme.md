@@ -68,4 +68,14 @@ Implement a template function that takes the following parameters:
 The function should iterate through the vector and compare each element with the value x. If an element is equal to x, it must be removed from the vector. Also, implement a separate function that prints out all elements of the vector.
 __________________________________________________________
 
-6. 
+6. Container list
+
+Write a class for a list that will store a dynamic array of a custom type Data (use the move constructor). The Data class has two fields: double and string.
+You also need to implement the following methods:
+- iteration through the list and the elements of the array
+- adding elements to the list
+- removing elements from the list
+- printing elements to the standard output stream
+__________________________________________________________
+
+7. 
