@@ -1,7 +1,6 @@
 #include <iostream>
 #include <vector>
 #include <list>
-#include <memory>
 #include <string>
 
 class Data{
@@ -14,8 +13,6 @@ public:
     Data& operator=(const Data&) = delete;
     Data(Data&&);
     Data& operator=(Data&&);
-	void setTitle(std::string _title);
-    void setNum(double _num);
     std::string& getTitle();
     double getNum();
     friend std::ostream& operator<<(std::ostream& os, Data&);
@@ -56,13 +53,31 @@ public:
 	List(List&&) = delete;
 	List& operator=(List&&) = delete;
 	size_t getSizeLst();
-    void setSizeLst(size_t _sizeLst);
     void pushBack(std::vector<Data>&&);
-    void popBack();
-    std::list<std::vector<Data>>& getLst();
+    std::list<std::vector<Data>>::iterator insertVector(size_t, std::vector<Data>&&);
+	void popBack();
     std::vector<Data>& operator[](size_t indx);
     void printLst(size_t numLst);
 };
+
+std::list<std::vector<Data>>::iterator List::insertVector(size_t indx, std::vector<Data>&& vecData){
+	if(indx >= sizeLst){
+		pushBack(std::move(vecData));
+		return lst.end();
+	}
+	if(indx < sizeLst){
+		auto it = lst.begin();
+		size_t cnt{0};
+		while(it != lst.end()){
+			if(indx == cnt){
+				++sizeLst;
+				return lst.insert(it, std::move(vecData));
+			}
+		it++;
+		cnt++;
+		}
+	}
+}
 
 std::vector<Data>& List::operator[](size_t indxLst){
 	auto it = lst.begin();
@@ -102,28 +117,42 @@ void List::printLst(size_t indxLst){
 
 int main(){
     Data task1("test info", 55.21);
-    Data task2("public and private", 11.77);
-    Data task3("class", 99.45);
+    Data task2("arduino open-source electronic prototyping platform enabling users to create interactive electronic objects.", 11.77);
+    Data task3("raspberry pi", 99.45);
 
     std::vector<Data> tmp;
     tmp.reserve(3);
     tmp.push_back(std::move(task1));
     tmp.push_back(std::move(task2));
     tmp.push_back(std::move(task3));
-    List lst(std::move(tmp));
+    
+	List lst(std::move(tmp));
 
     Data task4("vds", 88.32);
     Data task5("virtual server", 325.4);
     std::vector<Data> tmp2;
+	tmp.reserve(2);
     tmp2.push_back(std::move(task4));
     tmp2.push_back(std::move(task5));
 
     lst.pushBack(std::move(tmp2));
 	
-	lst.printLst(0);
-	lst.printLst(1);
-	lst.popBack();
-	lst.popBack();
+	Data task6("lenovo", 881.12);
+	Data task7("apple macbook", 914.09);
+	std::vector<Data> tmp3;
+	tmp3.reserve(2);
+	tmp3.push_back(std::move(task6));
+	tmp3.push_back(std::move(task7));
 	
+	lst.insertVector(1, std::move(tmp3));
+
+	for(size_t i = 0; i < lst.getSizeLst(); ++i){
+		std::cout << i << ":\n";
+		lst.printLst(i);
+	}
+	std::cout << lst.getSizeLst() << std::endl;
+	
+	lst.popBack();
+
     return 0;
 }
