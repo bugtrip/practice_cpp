@@ -46,6 +46,7 @@ class List{
 private:
     std::list<std::vector<Data>> lst;
     size_t sizeLst{0};
+	std::vector<Data>& operator[](size_t indx);
 public:
     List(std::vector<Data>&& vecData);
     List(const List&) = delete;
@@ -56,7 +57,6 @@ public:
     void pushBack(std::vector<Data>&&);
     std::list<std::vector<Data>>::iterator insertVector(size_t, std::vector<Data>&&);
 	void popBack();
-    std::vector<Data>& operator[](size_t indx);
     void printLst(size_t numLst);
 };
 
